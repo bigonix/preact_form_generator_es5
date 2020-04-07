@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preact</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="./inheritance.js"></script>
+    <script src="./preact.js"></script>
+    <script src="./htm.js"></script>
+    <script src="./form.js"></script>
+    <script>
+      (function () {
+        var pageData = {};
+        var forms = [
+          {
+            onSubmit: function (data) {
+              console.log(data);
+            },
+
+            blocks: [
+              {
+                type: 'fieldset',
+                rows: [
+                  {
+                    cols: [
+                      {
+                        className: 'col-xs-6',
+                        formEntities: [
+                          {
+                            elemType: 'label',
+                            text: 'Name',
+                            required: true,
+                          },
+                          {
+                            elemType: 'input',
+                            dataType: 'string',
+                            name: 'Name',
+                            placeholder: 'Role name',
+                            value: pageData.Name,
+                          },
+                          {
+                            elemType: 'note',
+                            text: 'Name of the role',
+                          },
+                        ],
+                      },
+                      {
+                        className: 'col-xs-6',
+                        formEntities: [
+                          {
+                            elemType: 'label',
+                            text: 'Comment',
+                            required: true,
+                          },
+                          {
+                            elemType: 'input',
+                            dataType: 'string',
+                            name: 'Comment',
+                            placeholder: 'Role comment',
+                            value: pageData.Comment,
+                          },
+                          {
+                            elemType: 'note',
+                            text: 'Comment of the role',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: 'footer',
+                rows: [
+                  {
+                    cols: [
+                      {
+                        className: 'col-xs-12',
+                        formEntities: [
+                          {
+                            elemType: 'button',
+                            type: 'submit',
+                            className: 'btn-primary',
+                            text: 'Submit',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ];
+
+        SmartForm.renderDOM(document.getElementById('root'), forms);
+      })();
+    </script>
+  </body>
+</html>
